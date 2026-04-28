@@ -34,7 +34,6 @@ export default tseslint.config(
       prettier: eslintPluginPrettier
     },
     rules: {
-      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -45,6 +44,12 @@ export default tseslint.config(
         }
       ],
       "prettier/prettier": "error"
+    }
+  },
+  {
+    files: ["packages/**/*.queries.ts"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off"
     }
   },
   {

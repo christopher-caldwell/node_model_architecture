@@ -235,10 +235,10 @@ function mountProtectedRoutes(router: Router, deps: ServerDeps): void {
   );
 }
 
-function asyncHandler(
-  handler: (req: any, res: any) => Promise<void>
+function asyncHandler<TRequest extends Request, TResponse extends Response>(
+  handler: (req: TRequest, res: TResponse) => Promise<void>
 ): RequestHandler {
   return (req, res, next) => {
-    handler(req, res).catch(next);
+    handler(req as TRequest, res as TResponse).catch(next);
   };
 }

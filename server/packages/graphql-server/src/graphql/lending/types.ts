@@ -1,20 +1,20 @@
-import { builder } from "../../schema-builder.js";
-import type { LoanRecord } from "../../types.js";
+import { builder } from "../schema-builder.js";
+import type { LoanRecord } from "../types.js";
 
 export interface StartLoanInput {
-  memberNumber: string;
-  barcode: string;
+  member_ident: string;
+  book_copy_barcode: string;
 }
 
 export const LoanRecordRef = builder
   .objectRef<LoanRecord>("LoanRecord")
   .implement({
     fields: (t) => ({
-      loanNumber: t.exposeString("loanNumber"),
-      createdAt: t.exposeString("createdAt"),
-      modifiedAt: t.exposeString("modifiedAt"),
-      dueAt: t.exposeString("dueAt", { nullable: true }),
-      returnedAt: t.exposeString("returnedAt", { nullable: true })
+      loan_number: t.exposeString("loan_number"),
+      dt_created: t.exposeString("dt_created"),
+      dt_modified: t.exposeString("dt_modified"),
+      dt_due: t.exposeString("dt_due", { nullable: true }),
+      dt_returned: t.exposeString("dt_returned", { nullable: true })
     })
   });
 
@@ -26,7 +26,7 @@ export const StartLoanInputRef: ImplementedInputRef<StartLoanInput> = builder
   .inputRef<StartLoanInput>("StartLoanInput")
   .implement({
     fields: (t) => ({
-      memberNumber: t.string({ required: true }),
-      barcode: t.string({ required: true })
+      member_ident: t.string({ required: true }),
+      book_copy_barcode: t.string({ required: true })
     })
   });

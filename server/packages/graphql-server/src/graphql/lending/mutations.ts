@@ -1,6 +1,6 @@
-import { InventoryCopyRef } from "../../catalog/types.js";
-import { builder, safeResolver } from "../../schema-builder.js";
-import { inventoryCopy, loanRecord } from "../../types.js";
+import { InventoryCopyRef } from "../catalog/types.js";
+import { builder, safeResolver } from "../schema-builder.js";
+import { inventoryCopy, loanRecord } from "../types.js";
 import { LoanRecordRef, StartLoanInputRef } from "./types.js";
 
 builder.mutationFields((t) => ({
@@ -10,10 +10,7 @@ builder.mutationFields((t) => ({
       input: t.arg({ type: StartLoanInputRef, required: true })
     },
     resolve: safeResolver(async (_parent, args, ctx) => {
-      const loan = await ctx.deps.lending.commands.checkOutBookCopy({
-        memberIdent: args.input.memberNumber,
-        bookCopyBarcode: args.input.barcode
-      });
+      const loan = await ctx.deps.lending.commands.checkOutBookCopy(args.input);
       return loanRecord(loan);
     })
   }),

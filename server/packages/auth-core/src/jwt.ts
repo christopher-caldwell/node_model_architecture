@@ -4,7 +4,7 @@ import type { Claims } from "./claims.js";
 import { InvalidTokenError } from "./errors.js";
 import type { AuthVerifier } from "./verifier.js";
 
-export const jwtAudience = "ops.craftcode.solutions";
+export const jwtAudience = "demo.library.com";
 
 export class JwtAuthAdapter implements AuthVerifier {
   constructor(private readonly jwtSecret: string) {}

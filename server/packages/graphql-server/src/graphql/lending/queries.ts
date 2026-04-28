@@ -1,5 +1,5 @@
-import { builder, safeResolver } from "../../schema-builder.js";
-import { loanRecord } from "../../types.js";
+import { builder, safeResolver } from "../schema-builder.js";
+import { loanRecord } from "../types.js";
 import { LoanRecordRef } from "./types.js";
 
 builder.queryFields((t) => ({

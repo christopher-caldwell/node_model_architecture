@@ -8,11 +8,13 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "source": "./src/index.ts",
       "default": "./dist/index.js"
     }
   },
   "scripts": {
     "build": "tsc -b",
+    "dev": ". .env && tsx watch --conditions=source src/main.ts",
     "typecheck": "tsc -b --pretty false"
   },
   "dependencies": {
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.25"
+    "@types/express": "^4.17.25",
+    "tsx": "^4.21.0"
   }
 }

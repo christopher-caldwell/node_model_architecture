@@ -1,0 +1,32 @@
+{
+  "name": "@library/root",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.5.2",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b --pretty false",
+    "lint": "eslint . && pnpm lint:boundaries",
+    "lint:fix": "eslint . --fix && pnpm lint:boundaries",
+    "lint:boundaries": "node ./scripts/check-boundaries.mjs",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.13.5",
+    "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.5.0",
+    "prettier": "^3.8.3",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.59.1",
+    "vitest": "^3.0.8"
+  }
+}
